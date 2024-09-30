@@ -20,11 +20,13 @@ app.use(cors({
 import ngoRouter from './routes/ngo.routes.js';
 import projectRouter from './routes/project.routes.js';
 import campaignRouter from './routes/campaign.routes.js';
+import userRouter from './routes/user.routes.js';
 
 //routes declaration
 app.use("/api/v1/ngo", ngoRouter);
 app.use("/api/v1/project", projectRouter);
 app.use("/api/v1/campaign", campaignRouter);
+app.use("/api/v1/user", userRouter);
 
 
 export { app }
