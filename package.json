@@ -1,0 +1,36 @@
+{
+    "name": "team23_ngo_backend",
+    "version": "1.0.0",
+    "description": "Backend server for codeissance hackathon 2024.",
+    "main": "index.js",
+    "type": "module",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "nodemon -r dotenv/config --experimental-json-modules src/index.js"
+    },
+    "keywords": [
+        "node",
+        "express",
+        "mongodb",
+        "backend",
+        "api"
+    ],
+    "author": "Sahil Nilesh Shivekar <sahilshivekarce@gmail.com>",
+    "license": "ISC",
+    "devDependencies": {
+        "nodemon": "^3.1.4"
+    },
+    "dependencies": {
+        "bcrypt": "^5.1.1",
+        "cloudinary": "^2.4.0",
+        "colors": "^1.4.0",
+        "cookie-parser": "^1.4.6",
+        "cors": "^2.8.5",
+        "dotenv": "^16.4.5",
+        "express": "^4.19.2",
+        "jsonwebtoken": "^9.0.2",
+        "mongoose": "^8.5.3",
+        "mongoose-aggregate-paginate-v2": "^1.1.2",
+        "multer": "^1.4.5-lts.1"
+    }
+}
