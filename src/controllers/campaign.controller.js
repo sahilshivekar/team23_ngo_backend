@@ -1,6 +1,7 @@
 import { asyncHandler } from "../utils/asyncHandler.js";
 import { NGO } from "../models/ngo.model.js";
 import { Campaign } from "../models/campaign.model.js";
+import { Project } from "../models/project.model.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
 import { ApiError } from "../utils/ApiError.js";
 import { uploadOnCloudinary, deleteFromCloudinary } from "../utils/cloudinary.js";
@@ -85,7 +86,56 @@ const addCampaign = asyncHandler(async (req, res) => {
         throw new ApiError(500, "Something went wrong while adding campaign");
     }
 
-    res.status(200).json(new ApiResponse(200, campaignData));
+    res
+        .status(200)
+        .json(
+            new ApiResponse(
+                200,
+                "Campaign Added successfully",
+                campaignData
+            ));
 });
 
-export { addCampaign };
+const getActiveProjects = asyncHandler(async (req, res) => {
+    const { startDate, endDate } = req.body;
+
+    // Validate input dates
+    if (!startDate || !endDate) {
+        throw new ApiError(400, "Both startDate and endDate are required.");
+    }
+
+    const start = new Date(startDate);
+    const end = new Date(endDate);
+    const today = new Date();
+
+    // Validate date logic
+    if (end <= start) {
+        throw new ApiError(400, "End date must be after start date.");
+    }
+
+    // Find projects that have started today or before and end after today
+    const projects = await Project.find({
+        startDate: { $lte: today },
+        endDate: { $gt: today }
+    }).populate('images');
+
+    // Format response data
+    const responseProjects = projects.map(project => ({
+        projectId: project._id,
+        title: project.title,
+        description: project.description,
+        image: project.images.length > 0 ? project.images[0].secureUrl : null // Get first image or null if none
+    }));
+
+    res
+        .status(200)
+        .json(
+            new ApiResponse(
+                200,
+                "Active projects data sent successfully",
+                responseProjects
+            ));
+});
+
+
+export { addCampaign, getActiveProjects };
