@@ -117,6 +117,7 @@ const NGOSchema = new Schema(
     }
 );
 
+
 NGOSchema.pre("save", async function (next) {
     if (!this.isModified("password")) return next();
 
