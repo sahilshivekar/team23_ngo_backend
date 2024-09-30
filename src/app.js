@@ -11,7 +11,9 @@ app.use(express.static("public"))
 app.use(cookieParser())
 app.use(cors({
     origin: process.env.CORS_ORIGIN,
-    credentials: true
+    credentials: true,
+    methods: '*', // Allows all HTTP methods
+    allowedHeaders: '*' // Allows all headers
 }))
 
 app.get("/api/v1/testing", (req, res) => {
