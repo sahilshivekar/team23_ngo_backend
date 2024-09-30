@@ -19,8 +19,10 @@ app.get("/api/v1/testing", (req, res) => {
 })
 
 //routes import
+import ngoRouter from './routes/ngo.routes.js';
 
 //routes declaration
+app.use("/api/v1/ngo", ngoRouter);
 
 
 export { app }
