@@ -1,4 +1,4 @@
-import { User } from "../models/user.model.js";
+// import { User } from "../models/user.model.js";
 import { NGO } from "../models/ngo.model.js";
 import jwt from "jsonwebtoken";
 import { ApiError } from "../utils/ApiError.js";
@@ -21,11 +21,11 @@ const verifyJwt = asyncHandler(async (req, _, next) => {
         }
         req.ngo = ngo;
     } else {
-        const user = await User.findById(decodedUser._id).select("-password");
-        if (!user) {
-            throw new ApiError(401, "Invalid access token for User");
-        }
-        req.user = user;
+        // const user = await User.findById(decodedUser._id).select("-password");
+        // if (!user) {
+        //     throw new ApiError(401, "Invalid access token for User");
+        // }
+        // req.user = user;
     }
 
     next();
