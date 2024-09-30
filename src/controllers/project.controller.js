@@ -107,7 +107,9 @@ const addProject = asyncHandler(async (req, res) => {
         .json(
             new ApiResponse(
                 200,
-                projectData)
+                "Project added successfully",
+                projectData
+            )
         );
 })
 
