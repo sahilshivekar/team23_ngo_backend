@@ -20,6 +20,12 @@ const CampaignSchema = new Schema(
             type: Number,
             default: 0 // Start with zero raised amount
         },
+        currency: {
+            type: String,
+            required: true,
+            enum: ['USD', 'EUR', 'INR', 'GBP', 'AUD', 'CAD', 'JPY', 'CNY', 'BRL', 'MXN'], 
+            default: 'INR' 
+        },
         startDate: {
             type: Date,
             required: true
