@@ -1,6 +1,6 @@
 import { asyncHandler } from "../utils/asyncHandler.js";
 import { NGO } from "../models/ngo.model.js";
-// import { Campaign } from "../models/campaign.model.js";
+import { Campaign } from "../models/campaign.model.js";
 import { Project } from "../models/project.model.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
 import { ApiError } from "../utils/ApiError.js";
@@ -51,6 +51,12 @@ const addProject = asyncHandler(async (req, res) => {
         }
     }
 
+    const start = new Date(startDate);
+    const end = new Date(endDate);
+    if (end <= start) {
+        throw new ApiError(400, "End date must be after the start date");
+    }
+
     resourcesNeeded.forEach((resource, index) => {
         if (!resource.resourceType || resource.resourceType.trim() === "") {
             deleteUploadedFiles(req?.files);
@@ -75,8 +81,8 @@ const addProject = asyncHandler(async (req, res) => {
     const newProject = await Project.create({
         title,
         description,
-        startDate: new Date(startDate),
-        endDate: new Date(endDate),
+        startDate: start,
+        endDate: end,
         location: {
             city,
             state,
