@@ -12,7 +12,7 @@ const NGOSchema = new Schema(
         description: {
             type: String,
             required: true,
-            maxlength: 500
+            maxlength: [500, 'Description cannot exceed 500 characters.']
         },
         contact: {
             phone: {
@@ -47,27 +47,32 @@ const NGOSchema = new Schema(
         address: {
             addressLine1: {
                 type: String,
-                required: true
+                required: [true, 'Address Line 1 is required.'],
+                maxlength: [50, 'Address Line 1 cannot exceed 50 characters.']
             },
             addressLine2: {
                 type: String,
-                required: false
+                required: false,
+                maxlength: [50, 'Address Line 2 cannot exceed 50 characters.']
             },
             city: {
                 type: String,
-                required: true
+                required: [true, 'City is required.'],
+                maxlength: [50, 'City cannot exceed 50 characters.']
             },
             state: {
                 type: String,
-                required: true
+                required: [true, 'State is required.'],
+                maxlength: [50, 'State cannot exceed 50 characters.']
             },
             country: {
                 type: String,
-                required: true
+                required: [true, 'Country is required.'],
+                maxlength: [50, 'Country cannot exceed 50 characters.']
             },
             postalCode: {
                 type: String,
-                required: true
+                required: [true, 'Postal code is required.']
             }
         },
         website: {
@@ -111,7 +116,7 @@ const NGOSchema = new Schema(
             type: String,
             required: true,
             trim: true,
-            minlength: 8
+            minlength: [8, 'Password must be at least 8 characters long.']
         },
     },
     {
