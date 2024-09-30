@@ -1,6 +1,6 @@
 import { asyncHandler } from "../utils/asyncHandler.js";
 import { NGO } from "../models/ngo.model.js";
-import { Campaign } from "../models/campaign.model.js";
+// import { Campaign } from "../models/campaign.model.js";
 import { Project } from "../models/project.model.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
 import { ApiError } from "../utils/ApiError.js";
