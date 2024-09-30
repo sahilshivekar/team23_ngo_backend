@@ -7,7 +7,8 @@ import {
     logoutNGO,
     updateNGODetails,
     updateOrUploadCoverImage,
-    updateOrUploadAvatar
+    updateOrUploadAvatar,
+    getDetails
 } from "../controllers/ngo.controller.js";
 
 
@@ -65,6 +66,13 @@ router
         verifyJwt,
         upload.single("coverImage"),
         updateOrUploadCoverImage
+    )
+
+router
+    .route("/getDetails")
+    .get(
+        verifyJwt,
+        getDetails
     )
 
 export default router

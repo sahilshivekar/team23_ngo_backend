@@ -347,11 +347,25 @@ const updateOrUploadAvatar = asyncHandler(async (req, res) => {
         )
 })
 
+const getDetails = asyncHandler(async(req, res)=>{
+    const ngo = req?.ngo;
+    res
+        .status(200)
+        .json(
+            new ApiResponse(
+                200,
+                "Details sent successfully",
+                ngo
+            )
+        )
+})
+
 export {
     registerNGO,
     loginNGO,
     logoutNGO,
     updateNGODetails,
     updateOrUploadCoverImage,
-    updateOrUploadAvatar
+    updateOrUploadAvatar,
+    getDetails
 }
