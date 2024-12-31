@@ -1,6 +1,6 @@
 # NGO Connect Backend API
 
-This repository contains the backend API developed for a web application designed to connect NGOs with volunteers. Built with Express.js, Node.js, MongoDB, and secured with JWT (JSON Web Tokens), this API empowers NGOs to manage their campaigns and projects effectively, while providing a streamlined login experience for both NGOs and volunteers.
+This repository contains the backend API developed for a web application designed to connect NGOs with volunteers. This project was created during the CodeEssence hackathon at Thadomal Shahani Engineering College, Mumbai. Built with Express.js, Node.js, MongoDB, and secured with JWT (JSON Web Tokens), this API empowers NGOs to manage their campaigns and projects effectively, while providing a streamlined login experience for both NGOs and volunteers.
 
 
 ## Features
